@@ -1,34 +1,36 @@
 function createTable() {
-  // Prompt for rows
   const rn = prompt("Input number of rows");
-  // Prompt for columns
   const cn = prompt("Input number of columns");
 
   // Validate numeric input
+  if (rn === null || cn === null || isNaN(rn) || isNaN(cn)) {
+    return; // do nothing for invalid input
+  }
+
   const rows = parseInt(rn);
   const cols = parseInt(cn);
 
-  if (isNaN(rows) || isNaN(cols)) {
-    // Ignore invalid input — do nothing
-    return;
-  }
-
+  // Validate positive values
   if (rows <= 0 || cols <= 0) {
-    alert("Number of rows and columns must be greater than 0");
+    alert("Invalid input!");
     return;
   }
 
-  // Get table element
   const table = document.getElementById("myTable");
-  table.innerHTML = ""; // Clear previous table
 
-  // Create table dynamically
+  // Clear previous table content
+  table.innerHTML = "";
+
+  // Build table
   for (let i = 0; i < rows; i++) {
-    const row = table.insertRow();
+    const tr = document.createElement("tr");
 
     for (let j = 0; j < cols; j++) {
-      const cell = row.insertCell();
-      cell.textContent = `Row-${i} Column-${j}`;
+      const td = document.createElement("td");
+      td.textContent = `Row-${i} Column-${j}`;
+      tr.appendChild(td);
     }
+
+    table.appendChild(tr);
   }
 }
