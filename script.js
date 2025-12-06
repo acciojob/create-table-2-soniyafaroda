@@ -2,15 +2,14 @@ function createTable() {
   const rn = prompt("Input number of rows");
   const cn = prompt("Input number of columns");
 
-  // Validate numeric input
+  // Validate input
   if (rn === null || cn === null || isNaN(rn) || isNaN(cn)) {
-    return; // do nothing for invalid input
+    return;
   }
 
   const rows = parseInt(rn);
   const cols = parseInt(cn);
 
-  // Validate positive values
   if (rows <= 0 || cols <= 0) {
     alert("Invalid input!");
     return;
@@ -18,10 +17,9 @@ function createTable() {
 
   const table = document.getElementById("myTable");
 
-  // Clear previous table content
+  // Clear previous table
   table.innerHTML = "";
 
-  // Build table
   for (let i = 0; i < rows; i++) {
     const tr = document.createElement("tr");
 
